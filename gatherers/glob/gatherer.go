@@ -15,17 +15,17 @@ type GlobGathererConfig struct {
 	Extensions      []string
 }
 
-type globGatherer struct {
+type GlobGatherer struct {
 	config GlobGathererConfig
 }
 
-func NewGlobGatherer(config GlobGathererConfig) echorend.RawTemplateGatherer {
-	return &globGatherer{
+func NewGlobGatherer(config GlobGathererConfig) *GlobGatherer {
+	return &GlobGatherer{
 		config: defaultGlobGathererConfig(config),
 	}
 }
 
-func (g *globGatherer) MustGather() []echorend.RawTemplateData {
+func (g *GlobGatherer) MustGather() []echorend.RawTemplateData {
 	templates, err := g.Gather()
 	if err != nil {
 		panic(err)
@@ -33,7 +33,7 @@ func (g *globGatherer) MustGather() []echorend.RawTemplateData {
 	return templates
 }
 
-func (g *globGatherer) Gather() ([]echorend.RawTemplateData, error) {
+func (g *GlobGatherer) Gather() ([]echorend.RawTemplateData, error) {
 	templates := make([]echorend.RawTemplateData, 0)
 
 	for _, extension := range g.config.Extensions {
