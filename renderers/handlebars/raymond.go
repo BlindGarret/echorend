@@ -54,6 +54,10 @@ func (r *HandlebarsRenderer) Setup() error {
 			if err != nil {
 				return err
 			}
+			if _, exists := r.templates[partial.TemplateName]; exists {
+				return fmt.Errorf("partial %s already exists as a view", partial.TemplateName)
+			}
+			r.templates[partial.TemplateName] = tmpl
 			raymond.RegisterPartialTemplate(partial.TemplateName, tmpl)
 		}
 	}

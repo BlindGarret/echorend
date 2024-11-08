@@ -149,6 +149,25 @@ func TestHandlebarsRendererMustSetup_ViewGathererErrors_Panics(t *testing.T) {
 	renderer.MustSetup()
 }
 
+func TestHandlebarsRendererSetup_PartialViewNameCollision_ReturnsError(t *testing.T) {
+	viewGatherer := NewMockTemplateGatherer()
+	viewGatherer.AddTemplate(echorend.RawTemplateData{
+		TemplateName: "same-partial-and-view-name",
+		TemplateData: "<HTML></HTML>",
+	})
+	partialGatherer := NewMockTemplateGatherer()
+	partialGatherer.AddTemplate(echorend.RawTemplateData{
+		TemplateName: "same-partial-and-view-name",
+		TemplateData: "<h1>test</h1>",
+	})
+
+	renderer := handlebars.NewHandlebarsRenderer(viewGatherer, partialGatherer)
+	err := renderer.Setup()
+	if err == nil {
+		t.Errorf("Expected error, got nil")
+	}
+}
+
 func TestHandlebarsRendererRender_TemplateNotFound_Errors(t *testing.T) {
 	viewGatherer := NewMockTemplateGatherer()
 	partialGatherer := NewMockTemplateGatherer()
@@ -173,6 +192,23 @@ func TestHandlebarsRendererRender_TemplateFound_NoErr(t *testing.T) {
 	renderer.MustSetup()
 
 	_, err := renderToString("test-view6", nil, renderer)
+
+	if err != nil {
+		t.Errorf("Expected no error, got %v", err)
+	}
+}
+
+func TestHandlerbarRendererRender_PartialNameToBeRednerer_PartialsCanRenderAsIfViews(t *testing.T) {
+	viewGatherer := NewMockTemplateGatherer()
+	partialGatherer := NewMockTemplateGatherer()
+	partialGatherer.AddTemplate(echorend.RawTemplateData{
+		TemplateName: "partial-to-render-as-view",
+		TemplateData: "<h1>test</h1>",
+	})
+	renderer := handlebars.NewHandlebarsRenderer(viewGatherer, partialGatherer)
+	renderer.MustSetup()
+
+	_, err := renderToString("partial-to-render-as-view", nil, renderer)
 
 	if err != nil {
 		t.Errorf("Expected no error, got %v", err)
