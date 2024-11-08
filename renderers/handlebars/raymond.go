@@ -90,6 +90,8 @@ func (r *HandlebarsRenderer) Render(w io.Writer, name string, data interface{}, 
 	return err
 }
 
+// CheckRenders is a convience tool for rendering all templates with no data
+// to ensure they aren't referencing non-existant partials.
 func (r *HandlebarsRenderer) CheckRenders() []error {
 	errs := make([]error, 0)
 	for name, _ := range r.templates {
