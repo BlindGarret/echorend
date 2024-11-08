@@ -8,6 +8,7 @@ import (
 	"github.com/BlindGarret/echorend/externals"
 )
 
+// GlobGathererConfig is a configuration struct for creating a GlobGatherer.
 type GlobGathererConfig struct {
 	TemplateDir     *string
 	FileAccess      externals.FileAccess
@@ -15,6 +16,7 @@ type GlobGathererConfig struct {
 	Extensions      []string
 }
 
+// GlobGatherer is a gatherer for getting templates from the filesystem using glob patterns.
 type GlobGatherer struct {
 	config GlobGathererConfig
 }
@@ -25,6 +27,7 @@ func NewGlobGatherer(config GlobGathererConfig) *GlobGatherer {
 	}
 }
 
+// MustGather attempts to gather templates from the filesystem using glob patterns. If an error occurs, it panics.
 func (g *GlobGatherer) MustGather() []echorend.RawTemplateData {
 	templates, err := g.Gather()
 	if err != nil {
@@ -33,6 +36,7 @@ func (g *GlobGatherer) MustGather() []echorend.RawTemplateData {
 	return templates
 }
 
+// Gather gets templates from the filesystem using glob patterns.
 func (g *GlobGatherer) Gather() ([]echorend.RawTemplateData, error) {
 	templates := make([]echorend.RawTemplateData, 0)
 
