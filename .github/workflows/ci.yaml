@@ -19,4 +19,6 @@ jobs:
       - name: Run tests
         run: go test --coverprofile=unit.cover.out ./...
       - name: Upload Coverage
+        with:
+          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report --force-coverage-parser go -r unit.cover.out
