@@ -74,3 +74,4 @@ outsource-firebase-prod.json
 tmp/
 
 tsp-output/
+.coverage.html
