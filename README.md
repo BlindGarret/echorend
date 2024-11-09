@@ -1,6 +1,6 @@
 
-![Codecov](https://img.shields.io/codecov/c/github/BlindGarret/echorend)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/BlindGarret/echorend/go.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/dd935c6857884fd4ad0ae2a4886a9872)](https://app.codacy.com/gh/BlindGarret/echorend/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/BlindGarret/echorend/ci.yml)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/dd935c6857884fd4ad0ae2a4886a9872)](https://app.codacy.com/gh/BlindGarret/echorend/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 ![GitHub language count](https://img.shields.io/github/languages/count/BlindGarret/echorend)
 ![GitHub top language](https://img.shields.io/github/languages/top/BlindGarret/echorend)
