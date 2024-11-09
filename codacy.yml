@@ -1,5 +1,9 @@
 ---
 exclude_paths:
   - "**/*_test.go"
-  - "README.md"
   - "docs/*"
+  - "./LICENSE.md"
+  - "**/THIRDPARTY_LICENSES.md"
+  - "./codacy.yml"
+  - "./README.md"
+  - "**/README.md"
