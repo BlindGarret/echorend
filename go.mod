@@ -1,6 +1,6 @@
 module github.com/BlindGarret/echorend
 
-go 1.16.0
+go 1.17.11
 
 require github.com/labstack/echo/v4 v4.12.0
 
