@@ -48,7 +48,7 @@ Is it a perfect solution? No. But it's a solution that works for me and I hope i
 
 ### Installation
 
-1. go get github.com/BlindGarret/lexorank
+1. go get github.com/BlindGarret/echorend
 
 ### Example
 
